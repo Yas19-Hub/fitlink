@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Gyms Near You - FitLink</title>
+    <link rel="stylesheet" href="gym.css">
+</head>
+<body>
+    <!-- Navigation - Exact match to your image -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">💪</span>
+                <span class="logo-text">FIT LINK</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../home.html" class="nav-link">Home</a></li>
+                <li><a href="../tracker/page.html" class="nav-link">Tracker</a></li>
+                <li><a href="../exercise/page.html" class="nav-link">Workouts</a></li>
+                <li><a href="../gyminfo/gym.html" class="nav-link active">Find Me A Gym</a></li>
+                <li><a href="../AIdietplans/diet.html" class="nav-link">Nutrition</a></li>
+                <li><a href="../contact/contact.html" class="nav-link">Contact us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <!-- User Profile Section (hidden by default, shown when logged in) -->
+                <div id="userProfile" class="user-profile" style="display: none;">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <img id="userAvatar" src="" alt="User" class="avatar-img">
+                        <span id="userInitials" class="user-initials"></span>
+                    </div>
+                    <span id="userName" class="user-name"></span>
+                    
+                    <!-- User Dropdown Menu -->
+                    <div id="userDropdown" class="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="/logout" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+                
+                <!-- Auth Buttons (hidden when logged in) -->
+                <div id="authButtons" class="auth-buttons">
+                    <button onclick="openLoginModal()" class="login-btn">Log In</button>
+                    <button onclick="openSignupModal()" class="signup-btn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="location-icon">📍</div>
+            <h1 class="hero-title">Find Gyms Near You</h1>
+            <p class="hero-subtitle">Discover local fitness centers to help you on your journey. Check out our exclusive discounts!</p>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="location-input" placeholder="Enter your location or ZIP code" class="search-input">
+                <select id="radius-select" class="radius-select">
+                    <option value="5000">5 km</option>
+                    <option value="10000" selected>10 km</option>
+                    <option value="15000">15 km</option>
+                    <option value="20000">20 km</option>
+                </select>
+                <button id="search-btn" class="search-btn">Search Gyms</button>
+                <button id="current-location-btn" class="location-btn">Use My Location</button>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <div class="content-wrapper">
+            <!-- Gym List Sidebar -->
+            <aside class="gym-sidebar">
+                <h3 class="sidebar-title">Nearby Gyms</h3>
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Finding gyms near you...</p>
+                </div>
+                <div id="gym-list" class="gym-list">
+                    <!-- Sample gym cards (will be replaced by API results) -->
+                    <div class="gym-card">
+                        <h4>morya-gym</h4>
+                        <p class="gym-address">pimple katta road vadagaon belagavi</p>
+                        <div class="gym-details">
+                            <span class="gym-rating">⭐ 4.5</span>
+                            <span class="gym-distance">2.3 km</span>
+                        </div>
+                        <div class="gym-offer">
+                            <span class="offer-badge">20% off first month</span>
+                        </div>
+                    </div>
+
+                    <div class="gym-card">
+                        <h4>Cardio Kings</h4>
+                        <p class="gym-address">456 Endurance Rd, Wellness City</p>
+                        <div class="gym-details">
+                            <span class="gym-rating">⭐ 4.2</span>
+                            <span class="gym-distance">3.7 km</span>
+                        </div>
+                        <div class="gym-offer">
+                            <span class="offer-badge">Sign up now for a free trial class!</span>
+                        </div>
+                    </div>
+
+                    <div class="gym-card">
+                        <h4>Yoga Haven</h4>
+                        <p class="gym-address">789 Serenity Blvd, Wellness City</p>
+                        <div class="gym-details">
+                            <span class="gym-rating">⭐ 4.8</span>
+                            <span class="gym-distance">4.1 km</span>
+                        </div>
+                        <div class="gym-offer">
+                            <span class="offer-badge">Bring a friend, get 50% off!</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Map Section -->
+            <main class="map-section">
+                <div id="map" class="map-container">
+                    <!-- Google Map will be loaded here -->
+                    <div class="map-placeholder">
+                        <div class="api-notice">
+                            <h3>⚠️ Google Maps API Key Missing</h3>
+                            <p>Please provide a Google Maps API key in your environment variables (NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) to display the map.</p>
+                            <div class="setup-instructions">
+                                <h4>Setup Instructions:</h4>
+                                <ol>
+                                    <li>Go to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a></li>
+                                    <li>Create a new project or select existing one</li>
+                                    <li>Enable Maps JavaScript API and Places API</li>
+                                    <li>Create an API key in Credentials</li>
+                                    <li>Replace 'YOUR_API_KEY' in the script with your key</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <p class="auth-switch">
+                    Don't have an account? 
+                    <a href="#" onclick="switchToSignup()">Sign up here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign Up</h2>
+                <span class="close" onclick="closeSignupModal()">&times;</span>
+            </div>
+            <form id="signupForm" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupUsername">Username:</label>
+                    <input type="text" id="signupUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign Up</button>
+                <p class="auth-switch">
+                    Already have an account? 
+                    <a href="#" onclick="switchToLogin()">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Google Maps API Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" async defer></script>
+    <script src="gym.js"></script>
+    <script src="../static/js/auth.js"></script>
+</body>
+</html>

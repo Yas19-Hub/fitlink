@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Workout & Recovery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            width: 200px;
+            padding: 20px;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        .description {
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px;
+            min-height: 40px;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" onclick="showDescription('gym')">
+      <h3>Gym Workout</h3>
+      <div id="desc-gym" class="description"></div>
+    </div>
+    <div class="card" onclick="showDescription('yoga')">
+      <h3>Yoga</h3>
+      <div id="desc-yoga" class="description"></div>
+    </div>
+    <div class="card" onclick="showDescription('home')">
+      <h3>Home Workout</h3>
+      <div id="desc-home" class="description"></div>
+    </div>
+    <div class="card" onclick="showDescription('injury')">
+      <h3>Injury Recovery Exercise</h3>
+      <div id="desc-injury" class="description"></div>
+    </div>
+  </div>
+
+  <script>
+    const descriptions = {
+      gym: "Effective strength training and cardio exercises to build muscle and endurance.",
+      yoga: "Relaxing yoga routines to improve flexibility and mindfulness.",
+      home: "Simple exercises that can be done at home with little or no equipment.",
+      injury: "Gentle recovery exercises designed to help healing post-injury."
+    };
+
+    function showDescription(type) {
+      // Clear all descriptions
+      for (const key in descriptions) {
+        document.getElementById('desc-' + key).innerText = '';
+      }
+
+      // Show the clicked card's description
+      document.getElementById('desc-' + type).innerText = descriptions[type];
+    }
+  </script>
+</body>
+</html>

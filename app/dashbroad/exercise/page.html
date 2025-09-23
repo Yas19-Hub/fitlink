@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Library</title>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+     <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">FIT LINK</div>
+            <ul class="nav-links">
+                <a href="../home.html">Home</a>
+                <a href="../">Tracker</a>
+                <a href="../exercise/page.html">Exercise</a>
+                <a href="../gyminfo/gym.html">Find Gym</a>
+                <a href="../gyminfo/gym.html">Nutrition</a>
+                <a href="/contact">Contact Us</a>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-login">Log In</a>
+                <a href="#" class="btn btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">Exercise Library</h1>
+            <div class="header-icons">
+                <span class="settings-icon">⚙️</span>
+                <div class="profile-icon">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Profile" class="profile-img">
+                </div>
+            </div>
+        </header>
+
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="showTab('gym')">Gym Exercises</button>
+            <button class="tab-btn" onclick="showTab('yoga')">Yoga Poses</button>
+        </div>
+
+        <div class="content-area">
+            <!-- Gym Exercises Tab -->
+            <div id="gym-tab" class="tab-content active">
+                <div class="exercise-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop" alt="Bench Press">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Bench Press</h3>
+                            <p>A fundamental upper-body exercise that targets the chest, shoulders, and triceps.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&h=200&fit=crop" alt="Bicep Curls">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Bicep Curls</h3>
+                            <p>An isolation exercise for the biceps, typically performed with dumbbells or a barbell.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=300&h=200&fit=crop" alt="Squats">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Squats</h3>
+                            <p>A compound exercise that works the thighs, hips, buttocks, quads, and hamstrings.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop" alt="Deadlift">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Deadlift</h3>
+                            <p>A compound exercise involving lifting a loaded barbell or bar off the floor to the hips.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&h=200&fit=crop" alt="Overhead Press">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Overhead Press</h3>
+                            <p>An upper-body strength exercise in which a weight is pressed straight upwards from the shoulders.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=300&h=200&fit=crop" alt="Pull-ups">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Pull-ups</h3>
+                            <p>An upper-body exercise where the body is pulled up with the hands.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yoga Poses Tab -->
+            <div id="yoga-tab" class="tab-content">
+                <div class="exercise-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1506629905607-ce50557d2c21?w=300&h=200&fit=crop" alt="Mountain Pose">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Mountain Pose</h3>
+                            <p>A foundational standing pose that improves posture and strengthens the legs.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=200&fit=crop" alt="Downward Dog">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Downward Dog</h3>
+                            <p>An inversion pose that strengthens the arms and legs while stretching the spine.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1506629905607-ce50557d2c21?w=300&h=200&fit=crop" alt="Warrior Pose">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Warrior Pose</h3>
+                            <p>A standing pose that builds strength and stability in the legs and core.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=200&fit=crop" alt="Tree Pose">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Tree Pose</h3>
+                            <p>A balancing pose that improves focus and strengthens the legs and core.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1506629905607-ce50557d2c21?w=300&h=200&fit=crop" alt="Child's Pose">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Child's Pose</h3>
+                            <p>A restorative pose that gently stretches the back and helps calm the mind.</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=200&fit=crop" alt="Cobra Pose">
+                        </div>
+                        <div class="exercise-info">
+                            <h3>Cobra Pose</h3>
+                            <p>A backbend that strengthens the spine and opens the chest and heart.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="page.js"></script>
+</body>
+</html>

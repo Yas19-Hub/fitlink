@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLink - Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">
+                FIT LINK
+            </div>
+            
+            <div class="signup-form">
+                <h1 class="signup-title">Sign Up</h1>
+                
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-input" placeholder="Angelina" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-input" placeholder="Jolie" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" class="form-input" placeholder="Random@gmail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-group">
+                            <input type="password" class="form-input" placeholder="Eg: 12345678" id="password" required>
+                            <span class="password-toggle" onclick="togglePassword('password')">👁️</span>
+                        </div>
+                        <div class="password-strength" id="passwordStrength"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <div class="password-group">
+                            <input type="password" class="form-input" placeholder="Eg: 12345678" id="confirmPassword" required>
+                            <span class="password-toggle" onclick="togglePassword('confirmPassword')">👁️</span>
+                        </div>
+                        <div class="password-match" id="passwordMatch"></div>
+                    </div>
+                    
+                    <button type="submit" class="signup-btn">sign up</button>
+                </form>
+                
+                <div class="divider">
+                    <span>Or Continue With</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="social-btn google-btn">G</button>
+                    <button class="social-btn apple-btn">🍎</button>
+                    <button class="social-btn facebook-btn">f</button>
+                </div>
+                
+                <div class="signin-link">
+                    Already have an account ? <a href="#">sign in</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <!-- You can replace this placeholder with your fitness image -->
+            <div>
+                <p style="margin-top: 20px; font-size: 10px; opacity: 0.8;">
+                   <img src="d:\fitlink\fitlink\src\loginpage\download.jpg" alt="signup page">
+                </p>
+            </div>
+            <img src="../images/Frame 41.png" alt="Fitness couple motivation" class="fitness-image">
+            
+            <!-- Uncomment and add your image source below -->
+            <!-- <img src="your-fitness-couple-image.jpg" alt="Fitness couple motivation" class="fitness-image"> -->
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleIcon = passwordField.nextElementSibling;
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthIndicator = document.getElementById('passwordStrength');
+            
+            if (password.length === 0) {
+                strengthIndicator.textContent = '';
+                return;
+            }
+            
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            const strengthTexts = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+            const strengthColors = ['#ff4757', '#ff6b7a', '#ffa726', '#66bb6a', '#00ff88'];
+            
+            strengthIndicator.textContent = `Password strength: ${strengthTexts[strength - 1] || 'Very Weak'}`;
+            strengthIndicator.style.color = strengthColors[strength - 1] || '#ff4757';
+            
+            checkPasswordMatch();
+        });
+
+        // Password match checker
+        document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+
+        function checkPasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const matchIndicator = document.getElementById('passwordMatch');
+            
+            if (confirmPassword.length === 0) {
+                matchIndicator.textContent = '';
+                matchIndicator.className = 'password-match';
+                return;
+            }
+            
+            if (password === confirmPassword) {
+                matchIndicator.textContent = '✓ Passwords match';
+                matchIndicator.className = 'password-match match';
+            } else {
+                matchIndicator.textContent = '✗ Passwords do not match';
+                matchIndicator.className = 'password-match no-match';
+            }
+        }
+
+        // Add some interactive effects
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentNode.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentNode.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long!');
+                return;
+            }
+            
+            alert('Sign up successful! (This is a demo)');
+        });
+    </script>
+</body>
+</html>

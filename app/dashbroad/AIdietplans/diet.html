@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Diet Planner</title>
+    <link rel="stylesheet" href="diet.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">FIT LINK</div>
+            <ul class="nav-links">
+                <a href="../home.html">Home</a>
+                <a href="">Tracker</a>
+                <a href="../exercise/page.html">Exercise</a>
+                <a href="../gyminfo/gym.html">Find Gym</a>
+                <a href="../AIdietplans/diet.html">Nutrition</a>
+                <a href="/contact">Contact Us</a>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-login">Log In</a>
+                <a href="#" class="btn btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="planner-header">
+            <h1>AI-Powered Diet Planner</h1>
+            <p>Tell us about yourself and your goals, and our AI will generate a personalized diet plan just for you.</p>
+        </div>
+
+        <!-- Basic Form -->
+        <div class="basic-form">
+            <div class="form-row">
+                <div class="input-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="70" required>
+                </div>
+                <div class="input-group">
+                    <label>Fitness Goals</label>
+                    <select id="fitness-goals" required>
+                        <option value="">Select your primary goal</option>
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="weight-gain">Weight Gain</option>
+                        <option value="muscle-gain">Muscle Gain</option>
+                        <option value="maintenance">Weight Maintenance</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label>Dietary Preferences</label>
+                    <select id="dietary-preferences">
+                        <option value="">Select your dietary preference</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="non-vegetarian">Non-Vegetarian</option>
+                        <option value="keto">Ketogenic</option>
+                        <option value="mediterranean">Mediterranean</option>
+                    </select>
+                </div>
+                <div class="toggle-group">
+                    <label class="toggle-container">
+                        <input type="checkbox" id="desi-diet">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-text">Include Desi Diet Option?</span>
+                    </label>
+                    <small>Get diet suggestions with traditional Indian foods.</small>
+                </div>
+            </div>
+
+            <button id="generate-btn" class="generate-button">
+                🧠 Generate Diet Plan
+            </button>
+        </div>
+
+        <!-- Diet Plan Columns -->
+        <div class="diet-columns">
+            <div class="column-header">
+                <h2>Your Custom Diet Plan</h2>
+                <p>Add your own meals and track your daily nutrition</p>
+            </div>
+
+            <div class="meal-columns">
+                <!-- Breakfast Column -->
+                <div class="meal-column">
+                    <div class="column-title">
+                        <span class="meal-icon">🌅</span>
+                        <h3>Breakfast</h3>
+                        <button class="add-meal-btn" data-meal="breakfast">+ Add</button>
+                    </div>
+                    <div class="meal-list" id="breakfast-list">
+                        <div class="empty-state">Click + Add to add breakfast items</div>
+                    </div>
+                    <div class="meal-summary">
+                        <span>Total: <strong id="breakfast-calories">0</strong> cal</span>
+                    </div>
+                </div>
+
+                <!-- Lunch Column -->
+                <div class="meal-column">
+                    <div class="column-title">
+                        <span class="meal-icon">☀️</span>
+                        <h3>Lunch</h3>
+                        <button class="add-meal-btn" data-meal="lunch">+ Add</button>
+                    </div>
+                    <div class="meal-list" id="lunch-list">
+                        <div class="empty-state">Click + Add to add lunch items</div>
+                    </div>
+                    <div class="meal-summary">
+                        <span>Total: <strong id="lunch-calories">0</strong> cal</span>
+                    </div>
+                </div>
+
+                <!-- Dinner Column -->
+                <div class="meal-column">
+                    <div class="column-title">
+                        <span class="meal-icon">🌙</span>
+                        <h3>Dinner</h3>
+                        <button class="add-meal-btn" data-meal="dinner">+ Add</button>
+                    </div>
+                    <div class="meal-list" id="dinner-list">
+                        <div class="empty-state">Click + Add to add dinner items</div>
+                    </div>
+                    <div class="meal-summary">
+                        <span>Total: <strong id="dinner-calories">0</strong> cal</span>
+                    </div>
+                </div>
+
+                <!-- Snacks Column -->
+                <div class="meal-column">
+                    <div class="column-title">
+                        <span class="meal-icon">🍎</span>
+                        <h3>Snacks</h3>
+                        <button class="add-meal-btn" data-meal="snacks">+ Add</button>
+                    </div>
+                    <div class="meal-list" id="snacks-list">
+                        <div class="empty-state">Click + Add to add snack items</div>
+                    </div>
+                    <div class="meal-summary">
+                        <span>Total: <strong id="snacks-calories">0</strong> cal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Summary -->
+            <div class="daily-summary">
+                <div class="summary-card">
+                    <h3>Daily Total</h3>
+                    <div class="total-calories">
+                        <span class="calories-number" id="total-calories">0</span>
+                        <span class="calories-unit">calories</span>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <h3>Goal</h3>
+                    <div class="goal-calories">
+                        <span class="calories-number" id="goal-calories">2000</span>
+                        <span class="calories-unit">calories</span>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Remaining</h3>
+                    <div class="remaining-calories">
+                        <span class="calories-number" id="remaining-calories">2000</span>
+                        <span class="calories-unit">calories</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Food Modal -->
+        <div id="food-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add Food Item</h3>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <label>Food Name</label>
+                        <input type="text" id="food-name" placeholder="e.g., Grilled Chicken Breast">
+                    </div>
+                    <div class="input-group">
+                        <label>Quantity</label>
+                        <input type="text" id="food-quantity" placeholder="e.g., 100g, 1 cup, 2 pieces">
+                    </div>
+                    <div class="input-group">
+                        <label>Calories</label>
+                        <input type="number" id="food-calories" placeholder="e.g., 165">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="add-food-btn" class="add-food-button">Add Food</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="diet.js"></script>
+</body>
+</html>
